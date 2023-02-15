@@ -54,4 +54,15 @@ public class MemberController {
 		}
 	}
 
+	public void searchMemberById(String inputMemberId) {
+		
+		MemberDTO member = memberService.selectMemberById(inputMemberId);
+		
+		if(member != null) {
+			memberResultView.display(member);
+		} else {
+			memberResultView.displayDmlResult("selectFailed");
+		}
+	}
+
 }
