@@ -30,14 +30,14 @@ public class MemberMenu {
 
 			switch(no) {
 			case 1 : memberController.registNewMember(inputMember()); break;
-			case 2 : memberController.selectAllMembers(); break;
-			case 3 : memberController.searchMemberById(inputMemberId()); break;
-			case 4 : memberController.searchMemberByGender(inputGender()); break;
-			case 5 : memberController.modifyPassword(inputMemberId(), inputPassword()); break;
-			case 6 : memberController.modifyEmail(inputMemberId(), inputEmail()); break;
-			case 7 : memberController.modifyPhone(inputMemberId(), inputPhone()); break;
-			case 8 : memberController.modifyAddress(inputMemberId(), inputAddress()); break;
-			case 9 : memberController.deleteMember(inputMemberId()); break;
+//			case 2 : memberController.selectAllMembers(); break;
+//			case 3 : memberController.searchMemberById(inputMemberId()); break;
+//			case 4 : memberController.searchMemberByGender(inputGender()); break;
+//			case 5 : memberController.modifyPassword(inputMemberId(), inputPassword()); break;
+//			case 6 : memberController.modifyEmail(inputMemberId(), inputEmail()); break;
+//			case 7 : memberController.modifyPhone(inputMemberId(), inputPhone()); break;
+//			case 8 : memberController.modifyAddress(inputMemberId(), inputAddress()); break;
+//			case 9 : memberController.deleteMember(inputMemberId()); break;
 			case 0 : return;
 			default : System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
 			}
@@ -57,8 +57,9 @@ public class MemberMenu {
 
 	private Map<String, String> inputMember() {
 
+		sc.nextLine();
 		System.out.print("가입할 아이디를 입력해주세요 : ");
-		String memberId = sc.nextLine() + sc.nextLine();
+		String memberId = sc.nextLine();
 		System.out.print("가입할 비밀번호를 입력해주세요 : ");
 		String memberPwd = sc.nextLine();
 		System.out.print("성명을 입력해주세요 : ");
