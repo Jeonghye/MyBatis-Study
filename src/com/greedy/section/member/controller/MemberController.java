@@ -40,7 +40,6 @@ public class MemberController {
 			memberResultView.displayDmlResult("insertFailed");
 		}
 
-
 	}
 
 	public void selectAllMembers() {
@@ -54,15 +53,99 @@ public class MemberController {
 		}
 	}
 
-	public void searchMemberById(String inputMemberId) {
+	public void searchMemberById(String id) {
 		
-		MemberDTO member = memberService.selectMemberById(inputMemberId);
+		MemberDTO member = memberService.selectMemberById(id);
 		
 		if(member != null) {
 			memberResultView.display(member);
 		} else {
 			memberResultView.displayDmlResult("selectFailed");
 		}
+	}
+
+	public void searchMemberByGender(String inputGender) {
+		
+		List<MemberDTO> memberList = memberService.selectMemberByGender(inputGender);
+		
+		if( memberList != null) {
+			memberResultView.display(memberList);
+		} else {
+			memberResultView.displayDmlResult("selectFailed");
+		}
+	}
+
+	public void modifyPassword(String inputMemberId, String inputPassword) {
+		
+		String memberId = inputMemberId;
+		String memberPwd = inputPassword;
+
+		MemberDTO member = new MemberDTO();
+		member.setMemberId(memberId);
+		member.setMemberPwd(memberPwd);
+		
+		if(memberService.updatePassword(member)) {
+			memberResultView.displayDmlResult("updateSuccess");
+		} else {
+			memberResultView.displayDmlResult("updateFailed");
+		}
+	}
+
+	public void modifyEmail(String inputMemberId, String inputEmail) {
+		String memberId = inputMemberId;
+		String email = inputEmail;
+
+		MemberDTO member = new MemberDTO();
+		member.setMemberId(memberId);
+		member.setEmail(email);
+		
+		if(memberService.updateEmail(member)) {
+			memberResultView.displayDmlResult("updateSuccess");
+		} else {
+			memberResultView.displayDmlResult("updateFailed");
+		}		
+	}
+
+	public void modifyPhone(String inputMemberId, String inputPhone) {
+		String memberId = inputMemberId;
+		String phone = inputPhone;
+
+		MemberDTO member = new MemberDTO();
+		member.setMemberId(memberId);
+		member.setPhone(phone);
+		
+		if(memberService.updatePhone(member)) {
+			memberResultView.displayDmlResult("updateSuccess");
+		} else {
+			memberResultView.displayDmlResult("updateFailed");
+		}			
+	}
+
+	public void modifyAddress(String inputMemberId, String inputAddress) {
+		String memberId = inputMemberId;
+		String address = inputAddress;
+
+		MemberDTO member = new MemberDTO();
+		member.setMemberId(memberId);
+		member.setAddress(address);
+		
+		if(memberService.updateAddress(member)) {
+			memberResultView.displayDmlResult("updateSuccess");
+		} else {
+			memberResultView.displayDmlResult("updateFailed");
+		}		}
+
+	public void deleteMember(String inputMemberId) {
+		
+		MemberDTO member = new MemberDTO();
+		member.setMemberId(inputMemberId);
+		
+		if(memberService.deleteMember(member)) {
+			memberResultView.displayDmlResult("deleteSuccess");
+		} else {
+			memberResultView.displayDmlResult("deleteFailed");
+		}
+		
 	}
 
 }

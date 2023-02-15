@@ -32,12 +32,12 @@ public class MemberMenu {
 			case 1 : memberController.registNewMember(inputMember()); break;
 			case 2 : memberController.selectAllMembers(); break;
 			case 3 : memberController.searchMemberById(inputMemberId()); break;
-//			case 4 : memberController.searchMemberByGender(inputGender()); break;
-//			case 5 : memberController.modifyPassword(inputMemberId(), inputPassword()); break;
-//			case 6 : memberController.modifyEmail(inputMemberId(), inputEmail()); break;
-//			case 7 : memberController.modifyPhone(inputMemberId(), inputPhone()); break;
-//			case 8 : memberController.modifyAddress(inputMemberId(), inputAddress()); break;
-//			case 9 : memberController.deleteMember(inputMemberId()); break;
+			case 4 : memberController.searchMemberByGender(inputGender()); break;
+			case 5 : memberController.modifyPassword(inputMemberId(), inputPassword()); break;
+			case 6 : memberController.modifyEmail(inputMemberId(), inputEmail()); break;
+			case 7 : memberController.modifyPhone(inputMemberId(), inputPhone()); break;
+			case 8 : memberController.modifyAddress(inputMemberId(), inputAddress()); break;
+			case 9 : memberController.deleteMember(inputMemberId()); break;
 			case 0 : return;
 			default : System.out.println("잘못된 번호입니다. 다시 입력해주세요.");
 			}
@@ -89,7 +89,7 @@ public class MemberMenu {
 		return newUserInfo;
 	}
 
-	private Object inputGender() {
+	private String inputGender() {
 		
 		System.out.print("조회할 성별 입력(남:M/여:F) : ");
 		sc.nextLine();
@@ -97,28 +97,28 @@ public class MemberMenu {
 		return sc.nextLine().toUpperCase();
 	}
 
-	private Object inputAddress() {
+	private String inputAddress() {
 		
 		System.out.print("수정할 주소 입력 : ");
 
 		return sc.nextLine();
 	}
 
-	private Object inputPhone() {
+	private String inputPhone() {
 		
 		System.out.print("수정할 전화번호 입력 : ");
 
 		return sc.nextLine();
 	}
 
-	private Object inputEmail() {
+	private String inputEmail() {
 		
 		System.out.print("수정할 이메일 입력 : ");
 
 		return sc.nextLine();
 	}
 
-	private Object inputPassword() {
+	private String inputPassword() {
 
 		System.out.print("수정할 비밀번호 입력 : ");
 
