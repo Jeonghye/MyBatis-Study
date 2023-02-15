@@ -11,8 +11,8 @@
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="C##GREEDY" />
-				<property name="password" value="GREEDY" />
+				<property name="username" value="C##HOMEWORK" />
+				<property name="password" value="HOMEWORK" />
 			</dataSource>
 		</environment>
 	</environments>

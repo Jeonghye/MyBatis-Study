@@ -2,3 +2,36 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+
+	<select id="insertNewMember">
+	INSERT
+	  INTO TBL_MEMBER A
+	(
+	  A.MEMBER_NO
+	, A.MEMBER_ID
+	, A.MEMBER_PWD
+	, A.MEMBER_NAME
+	, A.GENDER
+	, A.EMAIL
+	, A.PHONE
+	, A.ADDRESS
+	, A.AGE
+	, A.ENROLL_DATE
+	)
+	VALUES
+	(
+	  SEQ_MEMBER_NO.NEXTVAL
+	, #{ memberId }
+	, #{ memberPwd }
+	, #{ memberName }
+	, #{ gender }
+	, #{ email }
+	, #{ phone }
+	, #{ address }
+	, #{ age }
+	, SYSDATE
+	)
+	</select>
+
+</mapper>
