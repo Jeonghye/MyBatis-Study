@@ -60,5 +60,64 @@
 		, A.ENROLL_DATE
 	 FROM TBL_MEMBER A
 	</select>
+	<select id="selectMemberById" resultMap="memberResultMap">
+		    SELECT
+			   A.MEMBER_NO
+			 , A.MEMBER_ID
+			 , A.MEMBER_PWD
+			 , A.MEMBER_NAME
+			 , A.GENDER
+			 , A.EMAIL
+			 , A.PHONE
+			 , A.ADDRESS
+			 , A.AGE
+			 , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	<select id="selectMemberByGender" resultMap="memberResultMap">
+		    SELECT
+			   A.MEMBER_NO
+			 , A.MEMBER_ID
+			 , A.MEMBER_PWD
+			 , A.MEMBER_NAME
+			 , A.GENDER
+			 , A.EMAIL
+			 , A.PHONE
+			 , A.ADDRESS
+			 , A.AGE
+			 , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.GENDER = #{ gender }
+	</select>
+	<select id="updatePassword">
+	  		UPDATE
+       		   TBL_MEMBER A
+           SET A.MEMBER_PWD = #{ memberPwd }
+         WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	<select id="updateEmail">
+  		UPDATE
+       		   TBL_MEMBER A
+           SET A.EMAIL = #{ email }
+         WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	<select id="updatePhone">
+	  	UPDATE
+       		   TBL_MEMBER A
+           SET A.PHONE = #{ phone }
+         WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	<select id="updateAddress">
+	  	UPDATE
+       		   TBL_MEMBER A
+           SET A.ADDRESS = #{ address }
+         WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	<select id="deleteMember">
+		DELETE
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</select>
 
 </mapper>

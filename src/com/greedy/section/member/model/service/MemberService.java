@@ -46,4 +46,15 @@ public class MemberService {
 		return memberList;
 	}
 
+	public MemberDTO selectMemberById(String id) {
+		
+		SqlSession sqlSession = getSqlSession();
+		
+		MemberDTO member = memberDAO.selectMemberById(sqlSession, id);
+		
+		sqlSession.close();
+		
+		return member;
+	}
+
 }
