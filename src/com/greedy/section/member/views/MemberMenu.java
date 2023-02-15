@@ -30,7 +30,7 @@ public class MemberMenu {
 
 			switch(no) {
 			case 1 : memberController.registNewMember(inputMember()); break;
-//			case 2 : memberController.selectAllMembers(); break;
+			case 2 : memberController.selectAllMembers(); break;
 //			case 3 : memberController.searchMemberById(inputMemberId()); break;
 //			case 4 : memberController.searchMemberByGender(inputGender()); break;
 //			case 5 : memberController.modifyPassword(inputMemberId(), inputPassword()); break;

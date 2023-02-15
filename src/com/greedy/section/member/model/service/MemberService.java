@@ -5,6 +5,9 @@ import com.greedy.section.member.model.DTO.MemberDTO;
 
 import static com.greedy.section.common.Template.getSqlSession;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 public class MemberService {
@@ -30,6 +33,17 @@ public class MemberService {
 		sqlSession.close();
 		
 		return result > 0? true: false;
+	}
+
+	public List<MemberDTO> selectAllMember() {
+		
+		SqlSession sqlSession = getSqlSession();
+		
+		List<MemberDTO> memberList = memberDAO.selectAllMember(sqlSession);
+		
+		sqlSession.close();
+		
+		return memberList;
 	}
 
 }

@@ -4,6 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
 
+	<resultMap type="com.greedy.section.member.model.DTO.MemberDTO" id="memberResultMap">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="memberId" column="MEMBER_ID"/>
+		<result property="memberPwd" column="MEMBER_PWD"/>
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="gender" column="GENDER"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="address" column="ADDRESS"/>
+		<result property="age" column="AGE"/>
+		<result property="enrollDate" column="ENROLL_DATE"/>
+	</resultMap>
+
 	<select id="insertNewMember">
 	INSERT
 	  INTO TBL_MEMBER A
@@ -32,6 +45,20 @@
 	, #{ age }
 	, SYSDATE
 	)
+	</select>
+	<select id="selectAllMember" resultMap="memberResultMap">
+	  SELECT
+	   	  A.MEMBER_NO
+		, A.MEMBER_ID
+		, A.MEMBER_PWD
+		, A.MEMBER_NAME
+		, A.GENDER
+		, A.EMAIL
+		, A.PHONE
+		, A.ADDRESS
+		, A.AGE
+		, A.ENROLL_DATE
+	 FROM TBL_MEMBER A
 	</select>
 
 </mapper>
