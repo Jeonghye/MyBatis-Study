@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greedy.section02.common.MemberMapper">
+	<resultMap type="com.greedy.section02.model.dto.MemberDTO"
+		id="memberResutlMap">
+		<id property="memberNo" column="MEMBER_NO"/>
+		<id property="memberId" column="MEMBER_ID"/>
+		<id property="memberPwd" column="MEMBER_PWD"/>
+		<id property="memberName" column="MEMBER_NAME"/>
+		<id property="gender" column="GENDER"/>
+		<id property="email" column="EMAIL"/>
+		<id property="phone" column="PHONE"/>
+		<id property="address" column="ADDRESS"/>
+		<id property="age" column="AGE"/>
+		<id property="enrollDate" column="Enroll_Date"/>
+	</resultMap>
+	
+	<insert id="insertMember" parameterType="com.greedy.section02.model.dto.MemberDTO">
+		INSERT /* com.greedy.section02.common.MemberMapper#insertMember() */
+		  INTO TBL_MEMBER A
+		(
+		   A.MEMBER_NO
+		 , A.MEMBER_ID
+		 , A.MEMBER_PWD
+		 , A.MEMBER_NAME
+	     , A.GENDER
+	     , A.EMAIL
+		 , A.PHONE
+		 , A.ADDRESS
+		 , A.AGE
+		 , A.ENROLL_DATE
+		)
+		VALUES
+		(
+		  SEQ_MEMBER_NO
+		, #{ memberId }
+		, #{ memberPwd }
+		, #{ memberName }
+		, #{ gender }
+		, #{ email }
+		, #{ phone }
+		, #{ address }
+		, #{ age }
+		, SYSDATE
+		)
+	</insert>
+	
+	<select id="selectAllMember" resultMap="memberResultMap">
+		SELECT /* com.greedy.section02.common.MemberMapper#selectAllMember() */
+		       A.MEMBER_NO
+		     , A.MEMBER_ID
+		     , A.MEMBER_PWD
+		     , A.MEMBER_NAME
+		     , A.GENDER
+		     , A.EMAIL
+		     , A.PHONE
+		     , A.ADDRESS
+		     , A.AGE
+		     , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 ORDER BY A.MEMBER_NO
+	</select>
+	
+	<select id="selectMemberById" parameterType="string">
+	    SELECT /* com.greedy.section02.common.MemberMapper#selectMemberById() */
+		       A.MEMBER_NO
+		     , A.MEMBER_ID
+		     , A.MEMBER_PWD
+		     , A.MEMBER_NAME
+		     , A.GENDER
+		     , A.EMAIL
+		     , A.PHONE
+		     , A.ADDRESS
+		     , A.AGE
+		     , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</select>
+	
+	<select id="selectMemberByGender" parameterType="string">
+	    SELECT /* com.greedy.section02.common.MemberMapper#selectMemberByGender() */
+		       A.MEMBER_NO
+		     , A.MEMBER_ID
+		     , A.MEMBER_PWD
+		     , A.MEMBER_NAME
+		     , A.GENDER
+		     , A.EMAIL
+		     , A.PHONE
+		     , A.ADDRESS
+		     , A.AGE
+		     , A.ENROLL_DATE
+		  FROM TBL_MEMBER A
+		 WHERE A.GENDER = #{ gender }
+	</select>
+	
+	<update id="updatePassword" parameterType="com.greedy.section02.model.dto.MemberDTO">
+		UPDATE /* com.greedy.section02.common.MemberMapper#updatePassword() */
+		       TBL_MEMBER A
+		   SET
+		       A.MEMBER_PASSWORD = #{ memberPwd }
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</update>
+	
+	<update id="updateEmail" parameterType="com.greedy.section02.model.dto.MemberDTO">
+		UPDATE /* com.greedy.section02.common.MemberMapper#updateEmail() */
+		       TBL_MEMBER A
+		   SET
+		       A.EMAIL = #{ email }
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</update>
+	
+	<update id="updatePhone" parameterType="com.greedy.section02.model.dto.MemberDTO">
+		UPDATE /* com.greedy.section02.common.MemberMapper#updatePhone() */
+		       TBL_MEMBER A
+		   SET
+		       A.PHONE = #{ phone }
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</update>
+	
+	<update id="updateAddress" parameterType="com.greedy.section02.model.dto.MemberDTO">
+		UPDATE /* com.greedy.section02.common.MemberMapper#updateAddress() */
+		       TBL_MEMBER A
+		   SET
+		       A.ADDRESS = #{ address }
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</update>
+	
+	<delete id="deleteMember" parameterType="string">
+		DELETE /* com.greedy.section02.common.MemberMapper#deleteMember() */
+		  FROM TBL_MEMBER A
+		 WHERE A.MEMBER_ID = #{ memberId }
+	</delete>
+	
+</mapper>
